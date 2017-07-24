@@ -1,7 +1,7 @@
 Pager Kata
 -----
 
-*Introduced by the [Dayton Clean Coders](https://www.meetup.com/daytoncleancoders/) Meetup group during the July 12th, 2017 gathering.*
+*Introduced by the [Dayton Clean Coders](https://www.meetup.com/daytoncleancoders/) Meetup group during the July 12th, 2017 gathering -- the objective was to introduce & practice Test-Driven Development.*
 
 This kata is about the writing of the underlying data model for a pager control (NOT about the presentation). What you should create is a class (bunch of classes) which is smart enough to provide all the data required to actually render the links to pages.
 
