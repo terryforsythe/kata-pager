@@ -1,10 +1,10 @@
-package PagerTest;
+package pager;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import Pager.Pager;
+import pager.Pager;
 
 public class PagerTest {
 

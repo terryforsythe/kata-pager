@@ -1,4 +1,4 @@
-package Pager;
+package pager;
 
 public class Pager {
 
