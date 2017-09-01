@@ -1,10 +1,8 @@
 package pager;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
-import pager.Pager;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class PagerTest {
 
@@ -13,68 +11,68 @@ public class PagerTest {
 	@Test
 	public void shouldReturnTotalNumberOfItems() {
 		int result = pager.getTotalNumberOfItems();
-		assertEquals(4680, result);
+		assertThat(result, is(4680));
 	}
 
 	@Test
 	public void shouldReturnPageSize() {
 		int result = pager.getPageSize();
-		assertEquals(20, result);
+		assertThat(result, is(20));
 	}
 
 	@Test
 	public void shouldReturnCurrentPageNumber() {
 		int result = pager.getCurrentPageNumber();
-		assertEquals(100, result);
+		assertThat(result, is(100));
 	}
 
 	@Test
 	public void shouldReturnNumberOfPages() {
 		int result = pager.calculateNumberOfPages();
-		assertEquals(234, result);
+		assertThat(result, is(234));
 	}
 
 	@Test
 	public void shouldRoundUpNumberOfPagesIfCalculationHasRemainder() {
 		this.pager = new Pager(653, 20, 30);
 		int result = pager.calculateNumberOfPages();
-		assertEquals(33, result);
+		assertThat(result, is(33));
 	}
 
 	@Test
 	public void shouldRecalculateNumberOfPagesWhenPageSizeIsChanged() {
 		pager.setPageSize(40);
 		int result = pager.calculateNumberOfPages();
-		assertEquals(117, result);
+		assertThat(result, is(117));
 	}
-	
+
 	@Test
 	public void shouldNotDisplayPreviousPageLinkWhenOnPage1() {
 		int currentPageNumber = 1;
-		boolean result = pager.displayPreviousPageLink(currentPageNumber); 
-		assertEquals(false, result);
+		boolean result = pager.displayPreviousPageLink(currentPageNumber);
+		assertThat(result, is(false));
 	}
-	
+
 	@Test
 	public void shouldDisplayPreviousPageLinkWhenOnPage2() {
 		int currentPageNumber = 2;
 		boolean result = pager.displayPreviousPageLink(currentPageNumber);
-		assertEquals(true, result);
+		assertThat(result, is(true));
 	}
-	
+
 	@Test
 	public void shouldNotDisplayNextPageLinkWhenOnLastPage() {
 		int currentPageNumber = pager.calculateNumberOfPages();
 		boolean result = pager.displayNextPageLink(currentPageNumber);
-		assertEquals(false, result);
+		assertThat(result, is(false));
 	}
-	
+
 	@Test
 	public void shouldDisplayNextPageLinkWhenNotOnLastPage() {
 		int currentPageNumber = pager.calculateNumberOfPages() - 1;
 		boolean result = pager.displayNextPageLink(currentPageNumber);
-		assertEquals(true, result);
-		
+		assertThat(result, is(true));
+
 	}
 
 }
