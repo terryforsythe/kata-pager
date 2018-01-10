@@ -3,12 +3,12 @@ package pager;
 public class Pager {
 
 	private int totalNumberOfItems;
-	private int pageSize;
+	private int numberOfItemsOnPage;
 	private int currentPageNumber;
 
-	public Pager(int totalNumberOfItems, int pageSize, int currentPageNumber) {
+	public Pager(int totalNumberOfItems, int numberOfItemsOnPage, int currentPageNumber) {
 		this.totalNumberOfItems = totalNumberOfItems;
-		this.pageSize = pageSize;
+		this.numberOfItemsOnPage = numberOfItemsOnPage;
 		this.currentPageNumber = currentPageNumber;
 	}
 
@@ -17,11 +17,11 @@ public class Pager {
 	}
 
 	public int getPageSize() {
-		return pageSize;
+		return numberOfItemsOnPage;
 	}
 
 	public void setPageSize(int newPageSize) {
-		pageSize = newPageSize;
+		numberOfItemsOnPage = newPageSize;
 	}
 
 	public int getCurrentPageNumber() {
@@ -29,11 +29,10 @@ public class Pager {
 	}
 
 	public int calculateNumberOfPages() {
-		return (totalNumberOfItems + pageSize - 1) / pageSize;
+		return (totalNumberOfItems + numberOfItemsOnPage - 1) / numberOfItemsOnPage;
 	}
 
-	public boolean displayPreviousPageLink(int currentPageNumber) {
-		this.currentPageNumber = currentPageNumber;
+	public boolean displayPreviousPageLink() {
 
 		if (currentPageNumber == 1) {
 			return false;
@@ -42,8 +41,7 @@ public class Pager {
 		return true;
 	}
 
-	public boolean displayNextPageLink(int currentPageNumber) {
-		this.currentPageNumber = currentPageNumber;
+	public boolean displayNextPageLink() { 
 
 		if (currentPageNumber == calculateNumberOfPages()) {
 			return false;
